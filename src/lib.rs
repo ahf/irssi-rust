@@ -33,30 +33,30 @@ pub fn print(input: &str) {
 
 #[macro_export]
 macro_rules! module_abicheck {
-    ($name:ident) => (
+    ($name:ident) => {
         #[no_mangle]
         pub unsafe fn $name(version: *mut libc::c_int) {
             *version = irssi::abi::VERSION;
         }
-    )
+    };
 }
 
 #[macro_export]
 macro_rules! module_init {
-    ($name:ident, $expr:block) => (
+    ($name:ident, $expr:block) => {
         #[no_mangle]
         pub fn $name() {
             $expr
         }
-    )
+    };
 }
 
 #[macro_export]
 macro_rules! module_deinit {
-    ($name:ident, $expr:block) => (
+    ($name:ident, $expr:block) => {
         #[no_mangle]
         pub fn $name() {
             $expr
         }
-    )
+    };
 }
