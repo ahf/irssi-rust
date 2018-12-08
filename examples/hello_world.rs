@@ -4,18 +4,13 @@
 
 extern crate irssi;
 
-#[no_mangle]
-pub unsafe fn hello_world_abicheck(version: *mut libc::c_int) {
-    *version = irssi::abi::VERSION;
-}
+irssi::module_abicheck!(hello_world_abicheck);
 
-#[no_mangle]
-pub fn hello_world_init() {
+irssi::module_init!(hello_world_init, {
     irssi::module::register("hello_world", "core");
     irssi::print("Hello world from Rust!");
-}
+});
 
-#[no_mangle]
-pub fn hello_world_deinit() {
+irssi::module_deinit!(hello_world_deinit, {
     irssi::print("Goodbye from Rust!");
-}
+});
