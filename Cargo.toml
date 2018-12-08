@@ -1,0 +1,24 @@
+[package]
+name = "irssi"
+version = "0.1.0"
+authors = ["Alexander Færøy <ahf@irssi.org>"]
+edition = "2018"
+readme = "README.markdown"
+license = "BSD-2-Clause"
+repository = "https://github.com/ahf/irssi-rust"
+description = "A Rust crate for writing modules for the Irssi IRC client"
+exclude = [
+    ".gitignore",
+    ".travis.yml",
+]
+
+[dependencies]
+libc = "0.2.44"
+
+[lib]
+name = "irssi"
+crate-type = ["lib"]
+
+[[example]]
+name = "hello_world"
+crate-type = ["dylib"]
